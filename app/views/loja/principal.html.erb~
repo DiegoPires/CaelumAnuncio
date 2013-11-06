@@ -20,7 +20,8 @@
       <td><%= a.ano %></td>
       <td><%= a.valor %></td>
       <td><%= a.descricao %></td>
-      <td><%= link_to "Editar", edit_anuncio_path(a) %></td>
+      <td><%= link_to "Editar", edit_anuncio_path(a) %> | 
+          <%= link_to "Excluir", delete_anuncio_path(a) %></td>
     </tr>
   <% end %>
 </table>

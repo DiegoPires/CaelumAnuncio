@@ -1,7 +1,8 @@
 AutoShop::Application.routes.draw do
-  resources :anuncios do
+  resources :anuncios, :except => :index  do
     member do
       get "delete"
+      delete "delete" => "anuncios#destroy"
     end
   end
 
