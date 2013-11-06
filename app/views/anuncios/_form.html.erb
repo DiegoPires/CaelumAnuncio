@@ -1,0 +1,13 @@
+<%= simple_form_for @anuncio do |f| %> 
+  <%= f.error_notification %>
+  <div class='form-inputs'>
+    <%= f.input :modelo %>
+    <%= f.input :descricao, :input_html => { :cols => 50, :rows => 3 } %>
+    <%= f.input :ano, collection: 1900..Time.new.year %>
+    <%= f.input :valor %>
+  </div>
+
+  <div class='form-actions'>
+    <%= f.button :submit %>
+  </div>
+<% end %>

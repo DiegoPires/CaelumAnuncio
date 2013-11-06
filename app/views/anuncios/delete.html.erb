@@ -1,0 +1,10 @@
+<h1><%= @anuncio.modelo %></h1>
+<span><%= number_to_currency @anuncio.valor, delimiter: ".", separator: ",", unit: "R$ " %></span>
+<h2><%= @anuncio.ano %></h2>
+<span><%= @anuncio.descricao %></span>
+
+<%= form_for @anuncio, html: { method: :delete } do |f| %>
+  <%= f.submit 'Confirmar' %>
+<% end %>
+
+<%= link_to "Cancelar", root_path %>

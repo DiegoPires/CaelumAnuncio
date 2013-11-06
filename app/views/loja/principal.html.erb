@@ -1,0 +1,27 @@
+<h1>Cadastro de anuncio</h1>
+
+<p><%= notice %></p>
+
+<%= render partial: "anuncios/form" %>
+
+<br><br>
+
+<table width="550" border=1>
+  <tr>
+    <th>Modelo</th>
+    <th>Ano</th>
+    <th>Valor</th>
+    <th>Descricao</th>
+    <td></th>
+  </tr>
+  <% @anuncios.each do |a| %>
+    <tr>
+      <td><%= a.modelo %></td>
+      <td><%= a.ano %></td>
+      <td><%= a.valor %></td>
+      <td><%= a.descricao %></td>
+      <td><%= link_to "Editar", edit_anuncio_path(a) %> | 
+          <%= link_to "Excluir", delete_anuncio_path(a) %></td>
+    </tr>
+  <% end %>
+</table>
