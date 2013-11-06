@@ -1,8 +1,11 @@
 <h1>Cadastro de anuncio</h1>
 
 <p><%= notice %></p>
+<p><%= alert %></p>
 
-<%= render partial: "anuncios/form" %>
+<% if user_signed_in? %>
+  <%= render partial: "anuncios/form" %>
+<% end %>
 
 <br><br>
 
@@ -12,7 +15,9 @@
     <th>Ano</th>
     <th>Valor</th>
     <th>Descricao</th>
-    <td></th>
+    <% if user_signed_in? %>
+      <td></th>
+    <% end %>
   </tr>
   <% @anuncios.each do |a| %>
     <tr>
@@ -20,8 +25,10 @@
       <td><%= a.ano %></td>
       <td><%= a.valor %></td>
       <td><%= a.descricao %></td>
-      <td><%= link_to "Editar", edit_anuncio_path(a) %> | 
-          <%= link_to "Excluir", delete_anuncio_path(a), method: :delete, data: { confirm: "Mesmo?" } %></td>
+      <% if user_signed_in? %>
+        <td><%= link_to "Editar", edit_anuncio_path(a) %> | 
+            <%= link_to "Excluir", delete_anuncio_path(a), method: :delete, data: { confirm: "Mesmo?" } %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

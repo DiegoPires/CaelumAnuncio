@@ -1,6 +1,7 @@
 # encoding: utf-8
 class AnunciosController < ApplicationController
   before_filter :load_pagina, :only => [:edit, :update, :delete, :destroy]
+  before_filter :authenticate_user!
 
   def create
     @anuncio = Anuncio.new params[:anuncio]

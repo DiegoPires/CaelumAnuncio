@@ -1,8 +1,11 @@
 <h1>Cadastro de anuncio</h1>
 
 <p><%= notice %></p>
+<p><%= alert %></p>
 
-<%= render partial: "anuncios/form" %>
+<% if user_signed_in? %>
+  <%= render partial: "anuncios/form" %>
+<% end %>
 
 <br><br>
 
@@ -21,7 +24,7 @@
       <td><%= a.valor %></td>
       <td><%= a.descricao %></td>
       <td><%= link_to "Editar", edit_anuncio_path(a) %> | 
-          <%= link_to "Excluir", delete_anuncio_path(a) %></td>
+          <%= link_to "Excluir", delete_anuncio_path(a), method: :delete, data: { confirm: "Mesmo?" } %></td>
     </tr>
   <% end %>
 </table>
