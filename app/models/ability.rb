@@ -1,0 +1,20 @@
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+    user ||= User.new
+
+    alias_action :edit, :update, :destroy, :delete, to: :anunciar
+
+    if user.admin?
+      can :approve, Anuncio
+      can :anunciar, Anuncio
+    end
+
+    can :create, Anuncio
+
+    can :anunciar, Anuncio do |anuncio|
+      user == anuncio.anunciante
+    end
+  end
+end

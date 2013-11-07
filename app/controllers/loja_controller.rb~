@@ -1,6 +1,10 @@
 class LojaController < ApplicationController
   def principal
     @anuncio = Anuncio.new
-    @anuncios = Anuncio.include(:anunciante).all
+    @anuncios = if can?(:approve, Anuncio)
+      Anuncio.includes(:anunciante).all
+    else
+      Anuncio.aprovados
+    end
   end
 end

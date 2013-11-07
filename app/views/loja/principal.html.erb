@@ -26,11 +26,13 @@
       <td><%= a.descricao %></td>
       <td><%= a.anunciante.nome if a.anunciante %></td>
       <td align=center>
-        <% if user_signed_in? && a.anunciante && a.anunciante = current_user %>
+        <% if can?(:edit, a) %>
           <%= link_to "Editar", edit_anuncio_path(a) %> | 
+        <% end %>
+        <% if can?(:delete, a) %>
           <%= link_to "Excluir", delete_anuncio_path(a), method: :delete, data: { confirm: "Mesmo?" } %>
         <% end %>
-        <% unless a.aprovado %>
+        <% if can?(:approve, a) && !a.aprovado %>
           <%= link_to "Aprovar", approve_anuncio_path(a), method: :put %>
         <% end %>
       </td>      

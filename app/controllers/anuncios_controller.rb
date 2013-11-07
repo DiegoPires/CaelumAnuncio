@@ -1,11 +1,9 @@
 # encoding: utf-8
 class AnunciosController < ApplicationController
-  before_filter :load_pagina, :only => [:edit, :update, :delete, :destroy, :approve]
+  before_filter :carrega_e_autoriza
   before_filter :authenticate_user!
-  before_filter :restrito_por_anunciante, except: :create
-
+  
   def create
-    @anuncio = Anuncio.new params[:anuncio]
     @anuncio.anunciante = current_user
     if @anuncio.save
       flash[:notice] = "Seu anuncio foi cadastrado"
@@ -28,10 +26,6 @@ class AnunciosController < ApplicationController
   def delete
   end
 
-  def self.all_from_user
-    Anuncio.where(anunciante_id: current_user.id)
-  end
-
   def destroy 
     if @anuncio.destroy
       flash[:notice] = "Excluido"
@@ -42,17 +36,20 @@ class AnunciosController < ApplicationController
   def approve
     if @anuncio.update_attribute :aprovado, true
       flash[:notice] = "anuncio aprovado"
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   private
-  def load_pagina
-    @anuncio = Anuncio.find params[:id]
-  end
+  def carrega_e_autoriza
+    action = params[:action].to_sym
 
-  def restrito_por_anunciante
-    anunciante = Anuncio.find(params[:id]).anunciante
-    redirect_to root_path unless anunciante == current_user
+    if action == :create
+      @anuncio = Anuncio.new params[:anuncio]
+    else 
+      @anuncio = Anuncio.find params[:id]
+    end
+
+    authorize! action, @anuncio
   end
 end
