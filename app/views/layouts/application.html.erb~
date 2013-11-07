@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AutoShop</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% if user_signed_in? %>
+    <%= current_user.nome %> | 
+    <%= link_to "Sair", destroy_user_session_path, method: :delete %>
+  <% else %>  
+     <%= link_to "Entrar", new_user_session_path %> |
+    <%= link_to "Novo", user_registration_path %>
+  <% end %>
+
+  <%= yield %>
+
+</body>
+</html>
