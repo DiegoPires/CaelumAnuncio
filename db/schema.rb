@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131106223239) do
+ActiveRecord::Schema.define(:version => 20131107000910) do
 
   create_table "anuncios", :force => true do |t|
     t.string   "modelo"
     t.integer  "ano"
     t.text     "descricao"
-    t.decimal  "valor",      :precision => 8, :scale => 2
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.decimal  "valor",         :precision => 8, :scale => 2
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
+    t.integer  "anunciante_id"
+    t.boolean  "aprovado",                                    :default => false
   end
 
   create_table "users", :force => true do |t|
@@ -36,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20131106223239) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "nome"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

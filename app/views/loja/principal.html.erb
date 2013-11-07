@@ -15,9 +15,8 @@
     <th>Ano</th>
     <th>Valor</th>
     <th>Descricao</th>
-    <% if user_signed_in? %>
-      <td></th>
-    <% end %>
+    <th>Anunciante</th>
+    <td width=120></th>
   </tr>
   <% @anuncios.each do |a| %>
     <tr>
@@ -25,10 +24,16 @@
       <td><%= a.ano %></td>
       <td><%= a.valor %></td>
       <td><%= a.descricao %></td>
-      <% if user_signed_in? %>
-        <td><%= link_to "Editar", edit_anuncio_path(a) %> | 
-            <%= link_to "Excluir", delete_anuncio_path(a), method: :delete, data: { confirm: "Mesmo?" } %></td>
-      <% end %>
+      <td><%= a.anunciante.nome if a.anunciante %></td>
+      <td align=center>
+        <% if user_signed_in? && a.anunciante && a.anunciante = current_user %>
+          <%= link_to "Editar", edit_anuncio_path(a) %> | 
+          <%= link_to "Excluir", delete_anuncio_path(a), method: :delete, data: { confirm: "Mesmo?" } %>
+        <% end %>
+        <% unless a.aprovado %>
+          <%= link_to "Aprovar", approve_anuncio_path(a), method: :put %>
+        <% end %>
+      </td>      
     </tr>
   <% end %>
 </table>
