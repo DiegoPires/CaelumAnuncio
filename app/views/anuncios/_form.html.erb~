@@ -5,6 +5,16 @@
     <%= f.input :descricao, :input_html => { :cols => 50, :rows => 3 } %>
     <%= f.input :ano, collection: 1900..Time.new.year %>
     <%= f.input :valor %>
+
+    <% unless @anuncio.marca %>
+      <%= f.simple_fields_for :marca do |m| %>
+        <%= m.input :nome, label: "Marca" %>
+      <% end %>
+    <% end %>
+    
+
+    <%= label :anuncio, :marca, "ou selecione: "%>
+    <%= f.collection_select :marca_id, @marcas, :id, :nome, prompt: "..." %>
   </div>
 
   <div class='form-actions'>
