@@ -1,0 +1,21 @@
+pt:
+  modelo: Modelo
+  ano: Ano
+  valor: Valor
+  marca: Marcas
+  descricao: Descrição
+  anunciante: Anunciante
+  criacao: Criação
+  idioma_portugues: Portugues
+  idioma_ingles: Ingles
+  anuncios:
+    zero: Nenhum anuncio
+    one: 1 anuncio
+    other: '%{count} anuncios'
+
+  time:
+    formats:
+      default: '%d/%m/%Y'
+      short: '%m de %Y'
+    day_names: 'Domingo, Segunda, Terca, Quarta, Quinta, Sexta, Sabado'
+  

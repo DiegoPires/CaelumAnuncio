@@ -5,6 +5,7 @@ AutoShop::Application.routes.draw do
     member do
       get "delete"
       delete "delete" => "anuncios#destroy"
+      put "approve" => "anuncios#approve"
     end
   end
 

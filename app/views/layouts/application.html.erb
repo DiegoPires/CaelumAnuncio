@@ -16,6 +16,11 @@
     <%= link_to "Novo", new_user_registration_path %>
   <% end %>
 
+  <ul>
+    <li><%= link_to t(:idioma_portugues), "idioma/pt", method: "put" %></li>
+    <li><%= link_to t(:idioma_ingles), "idioma/en", method: "put" %></li>
+  </ul>
+
   <%= yield %>
 
 </body>

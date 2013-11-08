@@ -11,6 +11,8 @@ AutoShop::Application.routes.draw do
 
   get "loja/principal"
 
+  put "idioma/:lingua" => "idiomas#update"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

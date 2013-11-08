@@ -9,14 +9,17 @@
 
 <br><br>
 
+<%= t :anuncios, count: @anuncios.size %> <br />
+
 <table width="750" border=1 align=center>
   <tr>
-    <th>Modelo</th>
-    <th>Ano</th>
-    <th>Valor</th>
-    <th>Marca</th>
-    <th>Descricao</th>
-    <th>Anunciante</th>
+    <th><%= t :modelo %></th>
+    <th><%= t :ano %></th>
+    <th><%= t :valor %></th>
+    <th><%= t :marca %></th>
+    <th><%= t :descricao %></th>
+    <th><%= t :anunciante %></th>
+    <th><%= t :criacao %></th>
     <td width=120></th>
   </tr>
   <% @anuncios.each do |a| %>
@@ -27,6 +30,7 @@
       <td><%= a.marca.nome if a.marca %></td>
       <td><%= a.descricao %></td>
       <td><%= a.anunciante.nome if a.anunciante %></td>
+      <td><%= l a.created_at %></td>
       <td align=center>
         <% if can?(:edit, a) %>
           <%= link_to "Editar", edit_anuncio_path(a) %> | 

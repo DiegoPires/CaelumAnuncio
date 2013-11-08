@@ -1,12 +1,12 @@
 <%= simple_form_for @anuncio do |f| %> 
   <%= f.error_notification %>
   <div class='form-inputs'>
-    <%= f.input :modelo %>
+    <%= f.input_field :modelo %>
     <%= f.input :descricao, :input_html => { :cols => 50, :rows => 3 } %>
     <%= f.input :ano, collection: 1900..Time.new.year %>
     <%= f.input :valor %>
 
-    <% unless @anuncio.marca %>
+    <% unless @anuncio.marca.id %>
       <%= f.simple_fields_for :marca do |m| %>
         <%= m.input :nome, label: "Marca" %>
       <% end %>
