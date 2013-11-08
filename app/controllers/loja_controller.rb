@@ -1,6 +1,6 @@
 class LojaController < ApplicationController
   def principal
-    @anuncio = Anuncio.new
+    @anuncio = Anuncio.new { |a| a.build_marca }
     @anuncios = if can?(:approve, Anuncio)
       Anuncio.includes(:anunciante).all
     else

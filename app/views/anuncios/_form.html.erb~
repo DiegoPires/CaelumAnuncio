@@ -5,8 +5,6 @@
     <%= f.input :descricao, :input_html => { :cols => 50, :rows => 3 } %>
     <%= f.input :ano, collection: 1900..Time.new.year %>
     <%= f.input :valor %>
-
-
   </div>
 
   <div class='form-actions'>

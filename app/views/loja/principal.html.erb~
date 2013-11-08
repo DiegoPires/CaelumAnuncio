@@ -9,11 +9,12 @@
 
 <br><br>
 
-<table width="550" border=1>
+<table width="750" border=1 align=center>
   <tr>
     <th>Modelo</th>
     <th>Ano</th>
     <th>Valor</th>
+    <th>Marca</th>
     <th>Descricao</th>
     <th>Anunciante</th>
     <td width=120></th>
@@ -32,10 +33,9 @@
         <% if can?(:delete, a) %>
           <%= link_to "Excluir", delete_anuncio_path(a), method: :delete, data: { confirm: "Mesmo?" } %>
         <% end %>
-        
+        <% if can?(:approve, a) && !a.aprovado %>
           <%= link_to "Aprovar", approve_anuncio_path(a), method: :put %>
-        
-        
+        <% end %>
       </td>      
     </tr>
   <% end %>

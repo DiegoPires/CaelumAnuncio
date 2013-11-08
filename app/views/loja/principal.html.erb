@@ -9,11 +9,12 @@
 
 <br><br>
 
-<table width="550" border=1>
+<table width="750" border=1 align=center>
   <tr>
     <th>Modelo</th>
     <th>Ano</th>
     <th>Valor</th>
+    <th>Marca</th>
     <th>Descricao</th>
     <th>Anunciante</th>
     <td width=120></th>
@@ -23,6 +24,7 @@
       <td><%= a.modelo %></td>
       <td><%= a.ano %></td>
       <td><%= a.valor %></td>
+      <td><%= a.marca.nome if a.marca %></td>
       <td><%= a.descricao %></td>
       <td><%= a.anunciante.nome if a.anunciante %></td>
       <td align=center>
