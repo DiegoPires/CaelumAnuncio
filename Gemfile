@@ -14,6 +14,11 @@ gem 'mysql2'
 
 gem 'simple_form'
 
+group :test, :development do
+  gem "rspec-rails", "~>2.11"
+  gem "capybara"
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

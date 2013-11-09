@@ -8,9 +8,15 @@ gem 'rails', '3.2.3'
 gem 'devise', '>=2'
 gem 'cancan'
 
+gem 'strong_parameters'
+
 gem 'mysql2'
 
 gem 'simple_form'
+
+group :test, :development do
+  gem "rspec-rails", "~>2.11"
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

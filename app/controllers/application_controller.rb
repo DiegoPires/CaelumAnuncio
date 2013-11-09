@@ -4,10 +4,16 @@ class ApplicationController < ActionController::Base
   before_filter :verifica_locale
 
   def verifica_locale
-    lingua_preferida = params[:locale] || request.
-      env['HTTP_ACCEPT_LANGUAGE'].
-      scan(/^[a-z]{2}/).
-      first
+    lingua_preferida = if params[:locale]
+      params[:locale]
+    elsif request.env['HTTP_ACCEPT_LANGUAGE']
+      request.
+        env['HTTP_ACCEPT_LANGUAGE'].
+        scan(/^[a-z]{2}/).
+        first
+    else
+      "pt"
+    end
 
     I18n.locale = lingua_preferida
   end
